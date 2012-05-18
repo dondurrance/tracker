@@ -1,12 +1,8 @@
 namespace :bootstrap do
+
   desc "Add the default user"
   task :default_user => :environment do
-    User.create( :login => 'admin', :password => 'admin', :password_confirmation => 'admin' )
-  end
-
-  desc "Add the default ticket"
-  task :default_ticket => :environment do
-    Ticket.create( :subject => "Initial ticket", :description => "This is a default ticket created for demonstration purposes.", :status => "Closed")
+    User.create( :login => 'admin', :password => 'admin', :password_confirmation => 'admin', :first_name => 'Administrator', :last_name => 'User' )
   end
 
   desc "Add the admin role"
@@ -22,7 +18,13 @@ namespace :bootstrap do
     location.rooms << room
   end
 
+  desc "Add the default ticket"
+  task :default_ticket => :environment do
+    Ticket.create( :subject => "Initial ticket", :description => "This is a default ticket created for demonstration purposes.", :status => "Open", :ticket_type => "Repair", :room => Room.first, 
+                 :user => User.first, :opened_at => Time.now)
+  end
+
   desc "Run all bootstrapping tasks"
-  task :all => [:default_user, :default_ticket, :default_role, :default_room]
+  task :all => [:default_user, :default_role, :default_room, :default_ticket]
 
 end
