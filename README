@@ -27,4 +27,15 @@ LICENSE:
 
 Tracker v0.1 Alpha is released under the GPLv3. See the file LICENSE for details. 
 
+TODO:
+
+* Inventory tracking capability. Model associations are set up to allow this.
+
+* Proper Administration interface
+
+* Allow "add new" in room selector on new ticket
+
+* Add "closed by" field to ticket
+
+* Increase test coverage (it is currently quite low)
 
