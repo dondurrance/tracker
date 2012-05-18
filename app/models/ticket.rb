@@ -27,11 +27,4 @@ class Ticket < ActiveRecord::Base
     if self.opened_at then self.opened_at else self.created_at end
   end
 
-  before_destroy :prevent_cross_editing
-  before_update :prevent_cross_editing
-
-  def prevent_cross_editing
-    self.errors.add(:base, "You cannot delete someone else's ticket!") and return false if User.current_user != self.user
-  end
-
 end
