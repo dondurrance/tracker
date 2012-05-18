@@ -20,11 +20,11 @@
     end
 %>
 
-<%=h item("Contact:", @ticket.quick_contact_name + '&nbsp') %>
+<%=h item("Contact:", if @ticket.quick_contact_name then @ticket.quick_contact_name else "&nbsp" end) %>
 
-<%=h item("Contact Number:", @ticket.quick_contact_telephone + '&nbsp') %>
+<%=h item("Contact Number:", if @ticket.quick_contact_telephone then @ticket.quick_contact_name else "&nbsp" end) %>
 
-<%=h item("Client ticket:", @ticket.client_ticket_number + '&nbsp') %>
+<%=h item("Client ticket:", if @ticket.client_ticket_number then @ticket.client_ticket_number else "&nbsp" end) %>
 
 <br />
 
