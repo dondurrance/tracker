@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   end
  
   def require_https 
-  redirect_to :protocol => "https://" unless(request.ssl? or request.local? or request.post? or ENV["RAILS_ENV"]=="development")  
+  redirect_to :protocol => "https://" unless(request.ssl? or request.local? or ENV["RAILS_ENV"]=="development")  
   end
 
   def require_http 
