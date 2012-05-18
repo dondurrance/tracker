@@ -1,0 +1,28 @@
+Welcome to Tracker, version Alpha 1.
+
+Tracker is an issue tracking system designed for call-outs to multiple physical locations. It was developed to aid in tracking issues and dispatching technicians on-site. As such, each issue is bound to a physical location. It is also intended for use as an inventory tracking system in the future. 
+
+Tracker is the product of a couple months of work and has already been found to be very useful in a business environment. It is intended as a brief demonstration of Ruby on Rails coding practice. 
+
+STATUS: 
+
+Although fully functional, Tracker is in alpha release due to missing features, such as inventory tracking, a (planned) administration interface, and a more complete permissions system. At the moment, permissions are limited to read only or write access for tickets. There are models included for inventory tracking purposes that are not yet in use. 
+
+
+DOWNLOAD: 
+
+Tracker can always be found at its github repository, https://github.com/dondurrance/tracker . 
+
+
+INSTALLATION:
+
+Tracker v0.1 Alpha requires Ruby on Rails 3 along with Ruby 1.8 or 1.9 and several GEMs. After unpacking, run "bundle install" in the application directory to install any missing gems. 
+
+If you find any bugs, please submit them to the issue tracker in Github by clicking on the "Issues" tab. 
+
+
+LICENSE: 
+
+Tracker v0.1 Alpha is released under the GPLv3. See the file LICENSE for details. 
+
+

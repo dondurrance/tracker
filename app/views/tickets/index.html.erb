@@ -1,0 +1,56 @@
+
+<div class="span-1 smallbox">
+Status:
+</div>
+<div class="span-6 append-8 last">
+<%= form_tag tickets_path, :method => :get, :id => 'filter' do %>
+  <%= select_tag "filter[status]", options_for_select(Ticket.possible_statuses? << "All", @filter[:status]), {:prompt => true, :onchange => "$('filter').submit();"} %> 
+  &nbsp Type:
+  <%= select_tag "filter[ticket_type]", options_for_select(Ticket.possible_types? << "All", @filter[:ticket_type]), {:prompt => true, :onchange => "$('filter').submit();"} %> 
+<% end %>
+
+</div>
+
+
+<table>
+  <tr>
+    <th>Case Number</th>
+    <th>Site</th>
+    <th>Room</th>
+    <th>Type</th>
+    <th>Subject</th>
+    <th>Opened at</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tickets.each do |ticket| %>
+  <tr>
+
+    <td><%=h  "%06d" % ticket.id %></td>
+    <td><%= ticket.location.name %></td>
+    <td><%= ticket.room.name %></td>
+    <td><%= ticket.ticket_type %></td>
+    <td><%= ticket.subject %></td>
+    <td><%= ticket.opened_at%></td>
+    <td><%= ticket.status %></td>
+    <td><%= link_to 'Show', ticket %></td>
+
+    <% if current_user.can_write_tickets? && ticket.user == current_user then %>
+    <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+    <td><%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+
+<% if @tickets.blank? then %>
+<%= "<b>No tickets match the filter criteria.</b><br />".html_safe %>
+<% end %>
+<br />
+
+
+<%= link_to 'New Ticket', new_ticket_path %>

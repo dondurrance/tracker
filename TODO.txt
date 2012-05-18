@@ -1,0 +1,9 @@
+* Inventory tracking capability. Model associations are set up to allow this.
+
+* Proper Administration interface
+
+* Allow "add new" in room selector on new ticket
+
+* Add "closed by" field to ticket
+
+
