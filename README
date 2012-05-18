@@ -18,6 +18,8 @@ INSTALLATION:
 
 Tracker v0.1 Alpha requires Ruby on Rails 3 along with Ruby 1.8 or 1.9 and several GEMs. After unpacking, run "bundle install" in the application directory to install any missing gems. 
 
+Next, type "rake bootstrap:all" to create the initial admin user ("admin" / "admin") and a demonstration ticket.
+
 If you find any bugs, please submit them to the issue tracker in Github by clicking on the "Issues" tab. 
 
 
