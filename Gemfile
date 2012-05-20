@@ -13,7 +13,6 @@ gem 'calendar_date_select', :git => 'http://github.com/paneq/calendar_date_selec
 #gem 'calendar_date_select', :path => '/usr/lib/ruby/gems/1.8/bundler/gems/calendar_date_select-8e7ec79435a6'
 
 group :development, :test do
-    gem "rspec"
     gem "rspec-rails"
     gem "autotest"
     gem "autotest-standalone"
