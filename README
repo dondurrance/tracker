@@ -39,3 +39,4 @@ TODO:
 
 * Increase test coverage (it is currently quite low)
 
+* Switch to Authlogic or Omniauth
