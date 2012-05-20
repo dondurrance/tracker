@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   def login_required
     if session[:user]
       user = User.find(session[:user][:id])
-      return true
+    else 
+      flash[:warning] = 'Please login to continue'
+      session[:return_to] = request.request_uri
+      redirect_to :controller => "user_auth", :action => "login"
+      false
     end
-    flash[:warning]='Please login to continue'
-    session[:return_to]=request.request_uri
-    redirect_to :controller => "user_auth", :action => "login"
-    return false
   end
 
   def admin_required
