@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= page_title %></title>
+  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'overrides.css' %>
+  <%= stylesheet_link_tag 'blueprint/screen.css' %>
+  <%= javascript_include_tag :defaults %>
+  <%= calendar_date_select_includes "silver" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+  <br />
+  <div class="container">
+    <div id="header" class="span-24 last orange smallbox"> 
+      <div class="prepend-1 span-3">
+        <%= link_to "Tracker Alpha", tickets_path %>
+      </div>
+      <div class="prepend-17 span-2">
+        <%= if current_user.present? then link_to "Logout", "/logout" end %>
+      </div>
+    </div>
+    <div class="span-24 last grey smallbox">
+      <%= yield %>
+  </div>
+
+</body>
+</html>

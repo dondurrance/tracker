@@ -1,0 +1,93 @@
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation" class="append-5 last">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+      <% @ticket.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div><br />
+  <% end %>
+
+<div class="span-12">
+<div class="span-5 ">
+<%= label_tag "Site" %>
+   <div class="span-5 "> 
+<%= form_tag lookup_path, :method => :get, :remote => true, :id => 'location' do %>
+  <%= collection_select(:ticket, :location_id, Location.find(:all, :order => "NAME"), :id, :name, {:prompt => true}, {:onchange => "$('location').request();"}) %>
+  </div>
+</div>
+<% end %>
+
+
+<%= form_for(@ticket) do |f| %>
+
+    <div class="span-4">
+    <%= f.label :room %>
+   <div id="rooms" class="span-4 field">
+   <%= if @ticket.room then collection_select(:ticket, :room_id, @ticket.location.rooms, :id, :name) else 
+    select_tag("ticket[room_id]", "<option>Please select Site first</option>".html_safe)
+   
+   end %>
+  
+   </div>
+   </div>
+
+   <div id="location_hidden">
+    <%= f.hidden_field(:location_id) %>
+   </div>
+   <div id="hidden_fields">
+    
+   </div>
+
+   <div class="span-4 append-2 field last">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </div>
+  <div class="span-12 field last">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+    <div class="span-3 field">
+     <%= f.label :status %><br />
+     <%= select(:ticket, :status, Ticket.possible_statuses?) %>
+   </div>
+
+   <div class="span-3 field ">
+     <%= f.label :type %><br />
+     <%= select(:ticket, :ticket_type, Ticket.possible_types?) %>
+   </div>
+
+  <div class="span-4 field last">
+     <%= f.label :client_ticket %><br />
+    <%= f.text_field :client_ticket_number %>
+   </div>
+
+
+   <div class="span-6 field">
+    <%= f.label :contact_name %>
+    <%= f.text_field :quick_contact_name %>
+   </div>
+
+   <div class="span-6 field last">
+    <%= f.label :contact_telephone %>
+    <%= f.text_field :quick_contact_telephone %>
+   </div>
+
+   <div class="span-6 field">
+     <%= f.label :opened_at %><br />
+     <%= f.calendar_date_select "opened_at" %>
+   </div>
+   <div class="span-6 field last">
+     <%= f.label :closed_at %><br />
+     <%= f.calendar_date_select "closed_at" %>
+   </div>
+
+
+  <div class="span-1 actions last">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+</div>
