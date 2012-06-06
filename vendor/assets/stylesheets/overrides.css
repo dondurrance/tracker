@@ -1,0 +1,28 @@
+.grey {
+
+  background-color: #EEEEEE;
+}
+
+.blue { 
+  background-color: #D4D0F9; }
+
+.orange {
+  background-color: #FF9557 !important
+}
+
+.white {
+  background-color: #FFFFFF !important
+}
+
+.padded {
+  padding:3px;
+}
+
+.smallbox {
+  padding: .5em;
+  margin-bottom: .5em;
+}
+
+.center {
+  text-align:center;
+}

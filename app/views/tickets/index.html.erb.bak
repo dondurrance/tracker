@@ -1,0 +1,45 @@
+<h1>Listing tickets</h1>
+
+<table>
+  <tr>
+    <th>Subject</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Location</th>
+    <th>Room</th>
+    <th>User</th>
+    <th>Opened at</th>
+    <th>Closed at</th>
+    <th>Quick contact name</th>
+    <th>Quick contact telephone</th>
+    <th>Ticket type</th>
+    <th>Client ticket number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tickets.each do |ticket| %>
+  <tr>
+    <td><%= ticket.subject %></td>
+    <td><%= ticket.description %></td>
+    <td><%= ticket.status %></td>
+    <td><%= ticket.location_id %></td>
+    <td><%= ticket.room_id %></td>
+    <td><%= ticket.user_id %></td>
+    <td><%= ticket.opened_at %></td>
+    <td><%= ticket.closed_at %></td>
+    <td><%= ticket.quick_contact_name %></td>
+    <td><%= ticket.quick_contact_telephone %></td>
+    <td><%= ticket.ticket_type %></td>
+    <td><%= ticket.client_ticket_number %></td>
+    <td><%= link_to 'Show', ticket %></td>
+    <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+    <td><%= link_to 'Destroy', ticket, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ticket', new_ticket_path %>

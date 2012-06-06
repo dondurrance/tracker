@@ -1,0 +1,36 @@
+<% if @ticket.errors.any? %>
+  <div id="error_explanation" class="append-5 last">
+    <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+    <ul>
+      <% @ticket.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div><br />
+<% end %>
+
+<%= semantic_form_for @ticket do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :location, :collection => Location.find(:all, :order => :name).collect{ |c| [c.name,c.id]}, 
+      :required=>true, :as => :select, :prompt => "Please select a site", :label => "Site"  %>
+      <% if !@ticket.location then %>
+        <%= f.input :room, :as => :select, :prompt => "---", 
+          :collection => "" %>
+        <% else %>
+          <%= f.input :room, :as => :select, :prompt => "---", :collection => @ticket.location.rooms %>
+        <% end %>
+        <%= f.input :subject %>
+        <%= f.input :description %>
+        <%= f.input :status, :collection => Ticket.possible_statuses, :prompt => "Please select status" %>
+        <%= f.input :ticket_type, :collection => Ticket.possible_types, :prompt => "Please select type" %>
+        <%= f.input :client_ticket_number %>
+        <%= f.input :quick_contact_name %>
+        <%= f.input :quick_contact_telephone %>
+        <%= f.input :opened_at, :as => :datetime_picker %>
+        <%= f.input :closed_at, :as => :datetime_picker %>
+        <%= f.actions %>
+  <% end %>
+<% end %>
+
+
